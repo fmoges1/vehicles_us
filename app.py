@@ -7,7 +7,7 @@ df = pd.read_csv('vehicles_us.csv')
 
 # Vehicle Listings Data Viewer
 st.header('Vehicle Listings Data Viewer')
-df["price"] = df["price"].astype(np.dtype("float64"))
+#df["price"] = df["price"].astype(np.dtype("float64"))
 st.dataframe(df)
 
 # Add some basic statistics
