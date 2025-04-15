@@ -4,10 +4,14 @@ import plotly.express as px
 import numpy as np
 
 df = pd.read_csv('vehicles_us.csv')
+df['price'] = pd.to_numeric(df['price'], errors='coerce')  # Ensure price is float
+
+st.write("Data types")
+st.write(df.dtypes)
 
 # Vehicle Listings Data Viewer
 st.header('Vehicle Listings Data Viewer')
-#df["price"] = df["price"].astype(np.dtype("float64"))
+
 st.dataframe(df)
 
 # Add some basic statistics
