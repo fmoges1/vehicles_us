@@ -4,6 +4,7 @@ import plotly.express as px
 import numpy as np
 import os
 
+df = pd.read_csv('vehicles_us.csv')
 # Debug: Check if file exists
 if not os.path.exists("vehicles_us.csv"):
     st.error("CSV file not found. Please make sure it is included in the root directory.")
