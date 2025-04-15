@@ -22,6 +22,23 @@ else:
         st.write(df.head())
     except Exception as e:
         st.error(f"Error reading CSV: {e}")
+
+# Try to coerce any weird types (especially object columns)
+df = df.convert_dtypes()
+df = df.infer_objects()
+
+# Flatten any nested arrays (common cause)
+for col in df.columns:
+    df[col] = df[col].apply(lambda x: x[0] if isinstance(x, np.ndarray) and len(x) == 1 else x)
+    df[col] = df[col].apply(lambda x: str(x) if isinstance(x, np.ndarray) else x)
+
+# Cast known numeric columns to float (optional)
+numeric_cols = ['price', 'odometer']
+for col in numeric_cols:
+    if col in df.columns:
+        df[col] = pd.to_numeric(df[col], errors='coerce')
+
+
         
 #df = pd.read_csv('vehicles_us.csv')
 #df['price'] = pd.to_numeric(df['price'], errors='coerce')  # Ensure price is float
