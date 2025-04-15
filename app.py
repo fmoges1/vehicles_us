@@ -4,7 +4,7 @@ import plotly.express as px
 import numpy as np
 
 df = pd.read_csv('vehicles_us.csv')
-df['price'] = pd.to_numeric(df['price'], errors='coerce')  # Ensure price is float
+#df['price'] = pd.to_numeric(df['price'], errors='coerce')  # Ensure price is float
 
 #st.write("Data types")
 #st.write(df.dtypes)
